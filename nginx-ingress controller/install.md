@@ -23,6 +23,12 @@ Helm install on AWS/GCP/Azure/Other providers
 
 ```
 
+### Validate the Resources:
+
+```
+kubectl get pods -n ingress-nginx
+```
+
 The ingress-nginx-controller helm-chart is a generic install out of the box. The default set of helm values is not configured for installation on any infra provider. The annotations that are applicable to the cloud provider must be customized by the users.
 See AWS LB Controller.
 Examples of some annotations recommended (healthecheck ones are required for target-type IP) for the service resource of --type LoadBalancer on AWS are below:
@@ -52,6 +58,13 @@ If you don't have Helm or if you prefer to use a YAML manifest, you can run the 
 ## Install using Kubectl:
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.2/deploy/static/provider/cloud/deploy.yaml
+```
+
+
+### Validate the Resources:
+
+```
+kubectl get pods -n ingress-nginx
 ```
 
 Info: The YAML manifest in the command above was generated with helm template, so you will end up with almost the same resources as if you had used Helm to install the controller.
